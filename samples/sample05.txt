@@ -1,0 +1,11 @@
+var i, a, b, c
+
+println("Fibonacci Number")
+a = 1
+b = 1
+repeat(i = 1, 20){
+	c = a + b
+	printf("%3d %6d\n", i, a)
+	a = b
+	b = c
+}

@@ -1,0 +1,14 @@
+var a,b
+print("Input: ")
+a = input()
+b = a
+while(1){ 
+	print("Input: ")
+	a = input()
+	println()
+	if(a == "quit")
+		break
+	b.append(a)
+	println(b)
+}
+println("See you. (^_^)/")

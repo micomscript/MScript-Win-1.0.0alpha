@@ -1,0 +1,11 @@
+/*
+ * 9x9 ‚Ì•\‚ğo—Í‚·‚é
+ */
+var i,j
+
+repeat(i=1,9){
+	repeat(j=1,9){
+		printf(" %2d", i*j)
+	}
+	println()
+}

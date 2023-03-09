@@ -1,0 +1,9 @@
+var i, n, sum = 0
+
+print("n = ")
+n = int(input())
+
+repeat(i = 1, n){
+	sum += i
+	printf("%2d %3d\n", i, sum)
+}

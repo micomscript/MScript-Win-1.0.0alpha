@@ -1,0 +1,15 @@
+var m, n, i
+
+repeat(n=0,100){
+	printf("%3d:", n)
+	m = n
+	repeat(i=1,16){
+		if(m & 0x8000){
+			print("1")
+		} else {
+			print("0")
+		}
+		m <<= 1
+	}
+	println()
+}

@@ -1,0 +1,369 @@
+●demo01
+　音符マークを数値からビット演算にて表示。
+
+◆実行結果
+
+	****************
+	*              *
+	*      *       *
+	*      **      *
+	*      ***     *
+	*      * **    *
+	*      *   *   *
+	*      *    *  *
+	*      *   *   *
+	*     **       *
+	*   *****      *
+	*  ******      *
+	*  *****       *
+	*   **         *
+	*              *
+	****************
+
+◆プログラム
+var data = [	0xffff,
+		0x8001,
+		0x8101,
+		0x8181,
+		0x81c1,
+		0x8161,
+		0x8111,
+		0x8109,
+		0x8111,
+		0x8301,
+		0x8f81,
+		0x9f81,
+		0x9f01,
+		0x8c01,
+		0x8001,
+		0xffff ]
+var i,j,bit
+
+repeat(i = 0,data.len()-1) {
+	repeat(j = data.len()-1,0,-1) {
+		bit = (data[i] >> j) & 1
+		if(bit)
+			print("*")
+		else
+			print(" ")
+	}
+	println()
+}
+
+●demo02
+　nの値を二進数で表示する関数を作成する。
+
+◆実行結果
+
+$ printBinary(100)
+0b01100100
+$ printBinary(14)
+0b1110
+
+◆プログラム
+function printBinary(n) {
+	var i,index
+	var binary = []
+
+	for(i = 0;n > 0;i++) {
+		binary[i] = n % 2
+		n /= 2
+	}
+
+	print("0b")
+	while(i % 4 != 0) {
+		print("0")
+		i++
+	}
+	repeat(i = binary.len()-1,0,-1) {
+		print(binary[i])
+	}
+	println()
+}
+
+●demo03
+　16*16のA～Z,Space,Heart,Boxを入力された文字によって表示するプログラム。
+
+
+◆実行結果
+
+$ printLetter('A')
+
+    ***
+    ***
+   * ***
+   * ***
+  * * ***
+  *   ***
+ * * ** **
+$ printLetter('T')
+
+ * ** ** *
+ ** *** **
+ *  ***  *
+    ***
+    ***
+    ***
+   ** **
+$ printLetter('M')
+
+****   ***
+ ***  ***
+ * *** **
+ * *** **
+ *  *  **
+ *  *  **
+* *   * **
+
+◆プログラム
+
+function printLetter(data) {
+	// 文字データ
+	var letters = [
+		[ 0x000, 0x038, 0x038, 0x05c, 0x05c, 0x0ae, 0x08e, 0x15b ], // A
+		[ 0x000, 0x1bc, 0x0c7, 0x0c7, 0x0fc, 0x0c7, 0x0c7, 0x1bc ], // B
+		[ 0x000, 0x07b, 0x0e7, 0x1c7, 0x1c0, 0x1c0, 0x0e3, 0x07e ], // C
+		[ 0x000, 0x1be, 0x0c7, 0x0c7, 0x0c7, 0x0c7, 0x0c7, 0x1be ], // D
+		[ 0x000, 0x1be, 0x0e3, 0x0e8, 0x0f8, 0x0e8, 0x0e3, 0x1be ], // E
+		[ 0x000, 0x1be, 0x0e3, 0x0e8, 0x0f8, 0x0e8, 0x0e0, 0x1b0 ], // F
+		[ 0x000, 0x07a, 0x0e6, 0x1c6, 0x1c0, 0x1cf, 0x0e6, 0x07b ], // G
+		[ 0x000, 0x1ef, 0x0c6, 0x0c6, 0x0fe, 0x0c6, 0x0c6, 0x1ef ], // H
+		[ 0x000, 0x0ee, 0x038, 0x038, 0x038, 0x038, 0x038, 0x0ee ], // I
+		[ 0x000, 0x01b, 0x00e, 0x00e, 0x08e, 0x10e, 0x18e, 0x0fc ], // J
+		[ 0x000, 0x1ab, 0x0cc, 0x0d8, 0x0e0, 0x0d9, 0x0cd, 0x1a7 ], // K
+		[ 0x000, 0x1b0, 0x0e0, 0x0e0, 0x0e1, 0x0e2, 0x0e3, 0x1bf ], // L
+		[ 0x000, 0x3c7, 0x1ce, 0x176, 0x176, 0x126, 0x126, 0x28b ], // M
+		[ 0x000, 0x1c5, 0x0e2, 0x0f2, 0x0ba, 0x09e, 0x08e, 0x347 ], // N
+		[ 0x000, 0x038, 0x0c6, 0x183, 0x183, 0x183, 0x0c6, 0x038 ], // O
+		[ 0x000, 0x1bc, 0x0c3, 0x0c3, 0x0fc, 0x0c0, 0x0c0, 0x1b0 ], // P
+		[ 0x000, 0x038, 0x0c6, 0x183, 0x183, 0x19b, 0x0d6, 0x03b ], // Q
+		[ 0x000, 0x1bc, 0x0c3, 0x0c3, 0x0fc, 0x0d9, 0x0cd, 0x1a7 ], // R
+		[ 0x000, 0x0fb, 0x187, 0x1f0, 0x0fe, 0x01f, 0x1c3, 0x1be ], // S
+		[ 0x000, 0x16d, 0x1bb, 0x139, 0x038, 0x038, 0x038, 0x06c ], // T
+		[ 0x000, 0x1b5, 0x0e2, 0x0e2, 0x0e2, 0x0e2, 0x0e2, 0x07c ], // U
+		[ 0x000, 0x3b5, 0x0e2, 0x0e2, 0x074, 0x074, 0x038, 0x038 ], // V
+		[ 0x000, 0x383, 0x192, 0x192, 0x0d6, 0x0d6, 0x044, 0x044 ], // W
+		[ 0x000, 0x1c3, 0x0e4, 0x078, 0x038, 0x03c, 0x04e, 0x187 ], // X
+		[ 0x000, 0x365, 0x1c2, 0x0e4, 0x078, 0x038, 0x038, 0x06c ], // Y
+		[ 0x000, 0x0f7, 0x1dc, 0x01c, 0x038, 0x071, 0x0e6, 0x1bf ], // Z
+		[ 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000, 0x000 ], // Space
+		[ 0x000, 0x0c6, 0x129, 0x111, 0x082, 0x044, 0x028, 0x010 ], // Heart
+		[ 0x000, 0x1ff, 0x101, 0x101, 0x101, 0x101, 0x101, 0x1ff ]  // Box
+	]
+
+	var index,i,j
+
+	if(data >= 'A' && data <= 'Z')
+		index = data - 'A'
+	else if(data == ' ')
+		index = 26
+	else if(data == '.')
+		index = 27
+	else
+		index = 28
+
+	repeat(i = 0,7) {
+		repeat(j = 9,0,-1) {
+			if((letters[index][i] >> j) & 1)
+				print("*")
+			else
+				print(" ")
+		}
+		println()
+	}
+}
+
+●demo04
+　入力された数値を大きい順に整列して返す関数を作成する。
+　何も入力されなければ数値の入力は終了し、整列を開始する。
+
+◆実行結果
+
+$ demo04()
+数値入力：12.5
+数値入力：0.5
+数値入力：0.6
+数値入力：4
+数値入力：56
+数値入力：90.9
+数値入力：75.0
+数値入力：75
+数値入力：
+7
+6
+5
+4
+3
+2
+1
+0
+[ 90.9, 75, 75, 56, 12.5, 4, 0.6, 0.5 ]
+
+◆プログラム
+
+function demo04() {
+	var data = []
+	var n,i = 0
+
+	while(1) {
+		print("数値入力：")
+		n = input()
+		if(n == "")
+			break
+		data[i++] = float(n)
+	}
+
+	var r = []
+	var j
+
+	repeat(j = 0,i-1) {
+		r[j] = max(data)
+		data.remove(r[j])
+	}
+	return r
+}
+
+●demo05
+　sin波の値とフラフを表示する関数を作成する。
+　刻みは引数にて指定する。
+
+◆実行結果
+
+$ sin_wave(10)
+  x  sin(x)
+-----------
+  0   0.00:                    *
+ 10   0.17:                       *
+ 20   0.34:                           *
+ 30   0.50:                              *
+ 40   0.64:                                 *
+ 50   0.77:                                   *
+ 60   0.87:                                     *
+ 70   0.94:                                       *
+ 80   0.98:                                        *
+ 90   1.00:                                        *
+100   0.98:                                        *
+110   0.94:                                       *
+120   0.87:                                     *
+130   0.77:                                   *
+140   0.64:                                 *
+150   0.50:                              *
+160   0.34:                           *
+170   0.17:                       *
+180   0.00:                    *
+190  -0.17:                 *
+200  -0.34:             *
+210  -0.50:          *
+220  -0.64:       *
+230  -0.77:     *
+240  -0.87:   *
+250  -0.94: *
+260  -0.98: *
+270  -1.00: *
+280  -0.98: *
+290  -0.94: *
+300  -0.87:   *
+310  -0.77:     *
+320  -0.64:       *
+330  -0.50:          *
+340  -0.34:             *
+350  -0.17:                 *
+360  -0.00:                    *
+
+$ sin_wave(20)
+  x  sin(x)
+-----------
+  0   0.00:                    *
+ 20   0.34:                           *
+ 40   0.64:                                 *
+ 60   0.87:                                     *
+ 80   0.98:                                        *
+100   0.98:                                        *
+120   0.87:                                     *
+140   0.64:                                 *
+160   0.34:                           *
+180   0.00:                    *
+200  -0.34:             *
+220  -0.64:       *
+240  -0.87:   *
+260  -0.98: *
+280  -0.98: *
+300  -0.87:   *
+320  -0.64:       *
+340  -0.34:             *
+360  -0.00:                    *
+
+◆プログラム
+
+function sin_wave(m) {
+	var i,j,n,w = 35.0
+	var x,y
+
+	println("  x  sin(x)")
+	println("-----------")
+	repeat(i = 0,360,m) {
+		x = pi * i / 180
+		y = sin(x)
+		printf("%3d  %5.2f:",i,y)
+		n = w + w * y + 0.5
+		repeat(j = 0,n-1)
+			print(" ")
+		println("*")
+	}
+}
+
+●demo06
+　整数データを入力し、何も入力されなければデータ入力を終了し、
+　今までに入力されたデータの配列を返す関数を作成する。
+　その関数を用いた後、その配列データから最大値と最小値、平均値を表示する。
+
+◆実行結果
+
+◆プログラム
+function inputData() {
+	var i,x
+	var data = []
+
+	println("整数データを入力せよ")
+	println("何も入力しなければ終了します")
+
+	i = 0
+	while(1) {
+		print("データ: ")
+		x = input()
+		if(x == "")
+			break
+		if(isalpha(x)) {
+			println("整数を入力して下さい")
+			continue
+		}
+		data[i++] = int(x)
+	}
+	return data
+}
+function demo06() {
+	var i,sum,max,min
+	var data = inputData()
+
+	sum = data[0]
+	max = data[0]
+	min = data[0]
+	printf(" 0 : %3d\n", data[0])
+
+	repeat(i = 1,len(data)-1) {
+		printf("%2d : %3d\n", i, data[i])
+		sum += data[i]
+		if(max < data[i])
+			max = data[i]
+		if(min > data[i])
+			min = data[i]
+	}
+
+	printf("データ数 = %d\n",len(data))
+	printf("合　　計 = %d\n",sum)
+	if(len(data) > 0) {
+		printf("平　均 = %5.1f\n",float(sum / len(data)))
+		printf("最　大 = %d\n",max)
+		printf("最　小 = %d\n",min)
+	}
+}

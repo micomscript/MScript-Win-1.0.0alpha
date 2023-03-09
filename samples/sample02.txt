@@ -1,0 +1,9 @@
+var a,b,c
+a = 5
+b = 7
+
+printf("ŒğŠ·‘OF a = %d  b = %d \n", a, b)
+c = a
+a = b
+b = c
+printf("ŒğŠ·ŒãF a = %d  b = %d \n", a, b)

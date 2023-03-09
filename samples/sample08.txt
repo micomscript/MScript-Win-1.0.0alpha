@@ -1,0 +1,19 @@
+/*
+ * ‘fˆö”•ª‰ð
+ */
+var factor, n
+
+print("N = ")
+n = int(input())
+
+factor = 2
+print("[ ")
+while (n > 1){
+	if (n % factor == 0){
+		printf("%d ", factor)
+		n /= factor
+	} else {
+		factor++
+	}
+}
+println("]")

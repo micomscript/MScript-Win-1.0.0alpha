@@ -1,0 +1,9 @@
+var data = [0,1,3,6,10,15,20,23,18,14,11,6,3,1,0,-1]
+var i,k
+for(i = 0; data[i] != -1;i++){
+	printf("%2d:",i)
+	for(k = 0; k < data[i]; k++){
+		print("*")
+	}
+	printf(" %d\n",data[i])
+}

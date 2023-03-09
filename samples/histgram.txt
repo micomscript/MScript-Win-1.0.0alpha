@@ -1,0 +1,18 @@
+var data = []
+var n,i = 0
+
+while(1) {
+	print("”’l“ü—ÍF")
+	n = input()
+	if(n == "")
+		break
+	data[i++] = int(n)
+}
+var k
+for(i = 0; i < data.len();i++){
+	printf("%2d:",i)
+	for(k = 0; k < data[i]; k++){
+		print("*")
+	}
+	printf(" %d\n",data[i])
+}

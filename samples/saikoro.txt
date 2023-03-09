@@ -1,0 +1,8 @@
+var n,i,x
+print("U‚é‰ñ” :")
+n = input()
+srand(time()) //—”‚Ìí
+repeat(i = 1,n){
+	x = int(6.0*random()+ 1)
+	printf("o‚½–Ú : %d\n",x)
+}

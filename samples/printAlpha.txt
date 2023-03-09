@@ -1,0 +1,19 @@
+var a = [0x00,0x38,0x38,0x05c,0x05c,0x0ae,0x08e,0x15b]
+
+function printAlpha(data){
+	var N,M
+	N = 10
+	M = 8
+	var i,j,c,bit
+	for(i = 0; i < M; i++){
+		c = data[i]
+		for(j = 0; j < N; j++){
+			bit = (c >>(N-1-j)) & 1
+			if(bit == 1)
+				print("*")
+			else
+				print(" ")
+		}
+		println()
+	}
+}

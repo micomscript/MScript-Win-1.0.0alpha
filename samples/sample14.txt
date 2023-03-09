@@ -1,0 +1,32 @@
+var n,sum,number,basis,i,column,flag
+
+while (true){
+	print("n = ")
+	n = int(input())
+	if (n < 0)
+		break
+
+	// Œ…”‚ğƒJƒEƒ“ƒg
+	column = 1
+	basis = 10
+	while (basis <= n){
+		basis *= 10
+		column++
+	}
+
+	flag = 0
+	sum = 0
+	repeat(i=1,column){
+		basis /= 10
+		number = n / basis
+		sum += number
+		n %= basis
+		if (flag)
+			print(" + ")
+		print(number)
+		flag = 1
+	}
+	if (flag == 0)
+		print("0")
+	printf(" = %d\n", sum)
+}

@@ -1,0 +1,13 @@
+var data = [24,29,20,1,20,28,24,15,17]
+var rank
+var i,k,n
+n = len(data)
+println("“¾“_@‡ˆÊ")
+for(i = 0; i < n; i++){
+       rank = 1
+       for(k = 0; k < n; k++){
+               if(data[i] < data[k])
+                       rank++
+       }
+       printf("%3d  %3d\n",data[i],rank)
+}

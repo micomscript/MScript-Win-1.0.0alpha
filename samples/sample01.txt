@@ -1,0 +1,11 @@
+var a 
+a = 'A'
+
+printf("%d\n",a)
+printf("%X\n",a)
+printf("%c\n",a)
+
+a = 66
+printf("%d\n",a)
+printf("%X\n",a)
+printf("%c\n",a)

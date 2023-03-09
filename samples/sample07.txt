@@ -1,0 +1,44 @@
+/*
+ * 最大公約数
+ */
+function gcd(a, b){
+	var mod
+	mod = a % b
+	while (mod != 0){
+		a = b
+		b = mod
+		mod = a % b
+	}
+	return b
+}
+
+/*
+ * 最大公約数（再帰版）
+ */
+function gcd2(a, b){
+	if (a % b == 0)
+		return b
+	return gcd2(b, a%b)
+}
+
+/*
+ * 最小公倍数
+ */
+function lcm(a, b){
+	return a * b / gcd(a,b)
+}
+
+println("最大公約数")
+println(gcd(60,72))
+println(gcd(24570,36036))
+println(gcd(312,120))
+
+println("\n最大公約（再帰版）")
+println(gcd2(60,72))
+println(gcd2(24570,36036))
+println(gcd2(312,120))
+
+println("\n最小公倍数")
+println(lcm(24,36))
+println(lcm(60,72))
+println(lcm(312,120))

@@ -1,0 +1,5 @@
+var pi = 3.141593
+var i
+repeat(i = 0, 720, 10){
+	println( "*" * round(40.0 + 20.0 * sin(pi * i / 180)))
+}

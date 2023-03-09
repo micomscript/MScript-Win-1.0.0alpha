@@ -1,0 +1,13 @@
+/*
+ * sin(x) ‚ğ•`‚­
+ */
+var x,y,rad,i,k,w = 35.0
+
+repeat(x = 0, 360, 10){
+	rad = pi * x / 180
+	y = sin(rad)
+	k = int(w + w * y + 0.5)
+	repeat(i=0,k)
+		print(" ")
+	println("*")
+}

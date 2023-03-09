@@ -1,0 +1,19 @@
+/*
+ * ƒsƒ^ƒSƒ‰ƒX”‚ğ’T‚·
+ */
+var a,b,c,n,k
+
+n = 100
+k = 0
+repeat(a = 1, n){
+	repeat(b = a, n){
+		repeat(c = b, n){
+			if (a * a + b * b == c * c){
+				printf("%02d:(%3d,%3d,%3d )\n", ++k, a, b, c)
+				break
+			} else if (a * a + b * b < c * c){
+				break
+			}
+		}
+	}
+}

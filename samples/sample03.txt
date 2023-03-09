@@ -1,0 +1,23 @@
+var i, n
+
+print("n = ")
+n = int(input())
+
+// while•¶
+println("while•¶")
+i = 1
+while (i <= n){
+	println(i++)
+}
+
+// for•¶
+println("for•¶")
+for(i = 1 ; i <= n; i++){
+	println(i)
+}
+
+// repeat•¶
+println("repeat•¶")
+repeat(i = 1,n){
+	println(i)
+}
